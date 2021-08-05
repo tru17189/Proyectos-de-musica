@@ -57,7 +57,6 @@ for e in teclado:
             print("->"+teclado_nuevo[posicion_2])
             print("->"+teclado_nuevo[posicion_2+2])
             print("->"+teclado_nuevo[posicion_2+4])
-            print("\n")
             posicion_2 += 1
         break
     posicion += 1
