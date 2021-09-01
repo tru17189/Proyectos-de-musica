@@ -3,6 +3,7 @@ import random
 from winsound import Beep, PlaySound, SND_FILENAME
 import time
 import os
+import ray
 
 division = 0 
 
@@ -68,33 +69,26 @@ def PrimeraLista(relleno, Primertiempo):
             Primertiempo = Primertiempo * 2
         else:
             lista.append(0)
-        
-    for i in lista:
-        try:
-            i = int(i)
-        except:
-            pass
 
         if i == 0:
+            print("clip")
             PlaySound('sound4.wav', SND_FILENAME)
         elif i == 1:
             PlaySound('sound7.wav', SND_FILENAME)
 
 def TerceraLista(relleno):      
         for i in relleno:
-            try:
-                i = int(i)
-            except:
-                pass
-
             if i == 0:
+                print("clap")
                 time.sleep(0.1)
-                print("yeah")
             elif i == 1:
                 PlaySound('sound4.wav', SND_FILENAME)
                 time.sleep(0.3)
 
-r = tk.Tk()
+ray.get([PrimeraLista(ClaveConRelleno, division), TerceraLista(ClaveConRelleno)])
+
+
+'''r = tk.Tk()
 r.title('Generador de ritmos')
 
 ourMessage ='Metrica: %s' % labelritmo
@@ -112,11 +106,12 @@ messageVar3 = tk.Message(r, width=300, text = ourMessage3)
 messageVar3.config(bg='blue')
 messageVar3.pack( )
 
-button = tk.Button(r, text='play', width=25, command=lambda: [PrimeraLista(ClaveConRelleno, division), TerceraLista(ClaveConRelleno)])
+button = tk.Button(r, text='play', width=25, command=lambda: run())
 button.config(bg='lightgreen')
 button.pack()
 
 button2 = tk.Button(r, text='Stop', width=25, command=r.destroy)
 button2.config(bg='red')
 button2.pack()
-r.mainloop()
+
+r.mainloop()'''
