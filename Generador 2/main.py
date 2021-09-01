@@ -1,6 +1,7 @@
 import random
 from winsound import Beep, PlaySound, SND_FILENAME
 import time
+import os
 import multiprocessing
 
 division = 0 
@@ -13,7 +14,7 @@ def Metrica():
     return Metrica_final, numerador, denominador
 
 r, numerador, denominador = Metrica()
-print(r) 
+#print(r) 
 
 def Clave(numerador, denominador):
     clave = []
@@ -35,7 +36,7 @@ def Clave(numerador, denominador):
     return clave, denominador
 
 claveF, division = Clave(numerador, denominador)
-print("Clave: %s" %claveF)
+#print("Clave: %s" %claveF)
 
 def crearRelleno(clave, division):
     relleno = []
@@ -51,52 +52,28 @@ def crearRelleno(clave, division):
 
 ClaveConRelleno = []
 ClaveConRelleno = crearRelleno(claveF, division)
+
 #print(ClaveConRelleno)
 
-def PrimeraLista(relleno, Primertiempo):
-    contador = 0
-    lista = []
-    for i in relleno:
-        contador += 1
-        if contador == Primertiempo:
-            lista.append(1)
-            Primertiempo = Primertiempo * 2
-        else:
-            lista.append(0)
-        
-        for i in lista:
-            if i == 0:
-                pass
-            elif i == 1:
-                PlaySound('sound7.wav', SND_FILENAME)
-    
-    print(lista)
+archivo1= "%s" % ClaveConRelleno
+f = open('relleno.txt','w')
+f.write(archivo1)
+f.close()
 
-def SegundaLista(relleno):        
-        for i in relleno:
-            if i == 0:
-                PlaySound('sound5.wav', SND_FILENAME)
-            elif i == 1:
-                PlaySound('sound4.wav', SND_FILENAME)
-        print(relleno)
+archivo1= str(division)
+f = open('division.txt','w')
+f.write(archivo1)
+f.close()
 
-def TerceraLista(relleno):        
-        for i in relleno:
-            if i == 0:
-                pass
-            elif i == 1:
-                PlaySound('sound4.wav', SND_FILENAME)
-        print(relleno)
+p1 = multiprocessing.Process(target=os.system("py PrimerInstrumento.py"))
+p2 = multiprocessing.Process(target=os.system("py SegundoInstrumento.py"))
+p3 = multiprocessing.Process(target=os.system("py TerceroInstrumento.py"))
 
-processes = []
-for x in range(2):
-    p2 = multiprocessing.Process(target=SegundaLista(ClaveConRelleno),args=[1])
-    p1 = multiprocessing.Process(target=PrimeraLista(ClaveConRelleno, division),args=[1])
-    if __name__ == "__main__":
-        #p2.start()
-        processes.append(p2.start())
-        #p1.start()
-        processes.append(p1.start())
+p1.start()
+p2.start()
+p3.start()
 
-for p in processes:
-    p.join()
+p1.join()
+p2.join()
+p3.join()
+#SegundaLista(ClaveConRelleno)
