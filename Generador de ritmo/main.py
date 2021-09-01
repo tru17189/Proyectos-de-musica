@@ -2,11 +2,14 @@ import tkinter as tk
 import random
 from playsound import playsound
 import time
-import os
+from pydub import AudioSegment
+from pydub.playback import play
 from multiprocessing import Process
 
+global mixed1
 
 division = 0 
+mixed1 = 0
 
 def Metrica():
     mylist = [3, 4, 5, 6, 7]
@@ -58,9 +61,16 @@ ClaveConRelleno = []
 ClaveConRelleno = crearRelleno(claveF, division)
 labelRelleno = ClaveConRelleno
 
-#print(ClaveConRelleno)
+def soundCreator():
+    audio2 = AudioSegment.from_file('sound6.wav') 
+    audio3 = AudioSegment.from_file('sound7.wav') 
 
-def PrimeraLista(relleno, Primertiempo):
+    mixed1  = audio2.overlay(audio3)          
+    mixed1.export("mixed1.wav", format='wav') #export mixed  audio file      
+
+soundCreator()             
+
+def Run(relleno, Primertiempo):
     contador = 0
     lista = []
     for i in relleno:
@@ -81,7 +91,7 @@ def PrimeraLista(relleno, Primertiempo):
             playsound('sound7.wav')
             print("sound 7")
         if contador == 4:
-            playsound('sound6.wav')
+            playsound('mixed1.wav')  
             print("sound 6")
             contador = 0
 
@@ -112,7 +122,7 @@ messageVar3 = tk.Message(r, width=300, text = ourMessage3)
 messageVar3.config(bg='blue')
 messageVar3.pack( )
 
-button = tk.Button(r, text='play', width=25, command=lambda: PrimeraLista(ClaveConRelleno, division))
+button = tk.Button(r, text='play', width=25, command=lambda: Run(ClaveConRelleno, division))
 button.config(bg='lightgreen')
 button.pack()
 
