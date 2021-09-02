@@ -85,14 +85,14 @@ def Run(relleno, Primertiempo):
     for i in lista:
         contador += 1
         if i == 0:
-            print("sound 4")
-            playsound('sound4.wav')
+            print("sound 1")
+            playsound('sound5.wav')
         elif i == 1:
-            playsound('sound7.wav')
-            print("sound 7")
+            playsound('sound6.wav')
+            print("sound 2")
         if contador == 4:
             playsound('mixed1.wav')  
-            print("sound 6")
+            print("sound 3")
             contador = 0
 
 def TerceraLista(relleno):      
