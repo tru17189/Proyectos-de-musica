@@ -95,7 +95,7 @@ sonido4 = mixer.Sound('sound7.ogg')
 
 # Metodo para recorrer las listas
 def Run(filler, Instrumento3):
-    bpm = 80
+    bpm = 30
     beat_por_segundo = 60.0 / bpm / 4.0
     print(beat_por_segundo)
     for i, e in zip(filler, Instrumento3):
