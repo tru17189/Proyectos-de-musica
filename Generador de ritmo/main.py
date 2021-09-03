@@ -72,25 +72,15 @@ soundCreator()
 
 def Run(relleno, Primertiempo):
     contador = 0
-    lista = []
     for i in relleno:
-        contador += 1
-        if contador == Primertiempo:
-            lista.append(1)
-            Primertiempo = Primertiempo * 2
-        else:
-            lista.append(0)
-
-    contador = 0
-    for i in lista:
         contador += 1
         if i == 0:
             print("sound 1")
-            playsound('sound5.wav')
-        elif i == 1:
             playsound('sound6.wav')
+        elif i == 1:
+            playsound('sound5.wav')
             print("sound 2")
-        if contador == 4:
+        if contador == Primertiempo:
             playsound('mixed1.wav')  
             print("sound 3")
             contador = 0
