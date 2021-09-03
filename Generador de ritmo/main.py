@@ -1,3 +1,4 @@
+from os import terminal_size
 import tkinter as tk
 import random
 from playsound import playsound
@@ -38,8 +39,13 @@ def Clave(numerador, denominador):
             clave = []
         else:
             clave.append(opcion_elegida)
-    
-    return clave, denominador
+
+    if Psubdivision == 1:
+        Psubdivision = 4
+    elif Psubdivision == 4:
+        Psubdivision = 1
+
+    return clave, Psubdivision
 
 claveF, division = Clave(numerador, denominador)
 labelClave = claveF
@@ -57,9 +63,27 @@ def crearRelleno(clave, division):
     
     return relleno
 
-ClaveConRelleno = []
-ClaveConRelleno = crearRelleno(claveF, division)
-labelRelleno = ClaveConRelleno
+filler = []
+filler = crearRelleno(claveF, division)
+labelRelleno = filler
+
+def TerceraLista(relleno):
+    contador = 0
+    lista = []
+    for i in relleno:
+        if contador == 0:
+            lista.append(1)
+            contador += 1
+        elif contador == 3:
+            lista.append(0)
+            contador = 0
+        else:
+            lista.append(0)
+            contador += 1
+    
+    return lista
+
+Instrumento3 = TerceraLista(filler)
 
 def soundCreator():
     audio2 = AudioSegment.from_file('sound6.wav') 
@@ -73,26 +97,17 @@ soundCreator()
 def Run(relleno, Primertiempo):
     contador = 0
     for i in relleno:
-        contador += 1
         if i == 0:
             print("sound 1")
-            playsound('sound6.wav')
-        elif i == 1:
             playsound('sound5.wav')
+        elif i == 1:
+            playsound('sound6.wav')
             print("sound 2")
-        if contador == Primertiempo:
+        if contador == 0:
             playsound('mixed1.wav')  
             print("sound 3")
             contador = 0
-
-def TerceraLista(relleno):      
-        for i in relleno:
-            if i == 0:
-                print("clap")
-                time.sleep(0.1)
-            elif i == 1:
-                playsound('sound5.wav')
-                time.sleep(0.3)
+        contador += 1            
 
 r = tk.Tk()
 r.title('Generador de ritmos')
@@ -112,7 +127,7 @@ messageVar3 = tk.Message(r, width=300, text = ourMessage3)
 messageVar3.config(bg='blue')
 messageVar3.pack( )
 
-button = tk.Button(r, text='play', width=25, command=lambda: Run(ClaveConRelleno, division))
+button = tk.Button(r, text='play', width=25, command=lambda: Run(filler, division))
 button.config(bg='lightgreen')
 button.pack()
 
