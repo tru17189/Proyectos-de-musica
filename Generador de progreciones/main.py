@@ -532,7 +532,7 @@ def Run(filler, Instrumento3, Ritmo_Armonico, numerador, division):
                 print("si")
                 time.sleep(beat_por_segundo)
         repeticiones += 1
-        bpm += 10
+        bpm += 5
         beat_por_segundo = 60.0 / bpm / 4.0
         print("AGAIN")
 
