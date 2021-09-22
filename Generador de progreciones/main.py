@@ -89,7 +89,7 @@ Instrumento3 = TerceraLista(filler)
 mixer.init()
 sonido1 = mixer.Sound('sound4.ogg') 
 sonido1.set_volume(0.2)
-sonido2 = mixer.Sound('sound5.ogg') 
+sonido2 = mixer.Sound('sound8.ogg') 
 sonido2.set_volume(0.2)
 sonido3 = mixer.Sound('sound6.ogg') 
 sonido3.set_volume(0.2)
@@ -154,46 +154,61 @@ def creador_ritmo_armonico(filler, numerador):
 Ritmo_Armonico = creador_ritmo_armonico(filler, numerador)
 
 def Dominante_Tonica_Sub(Ritmo_Armonico):
-    mylist = ["do", "re", "fa"]
+    mylist = ["do", "re", "fa", "sol", "do#"]
     c = random.choice(mylist)
     contador = 0
     compas = 1
     if c == "do":
         for i in Ritmo_Armonico:
+            mylist2 = ["sub", "sub", "dominante", "tonica"]
+            d = random.choice(mylist2)
+            if d == "sub":
+                var1 = "fa"
+                var2 = "la"
+                var3 = "sol"
+            elif d == "dominante":
+                var1 = "sol"
+                var2 = "si"
+                var3 = "re"
+            elif d == "tonica":
+                var1 = "do"
+                var2 = "mi"
+                var3 = "sol"
+
             if (i == 0) and (compas == 1):
                 Ritmo_Armonico[contador] = "do"
                 Ritmo_Armonico[contador+1] = "mi"
                 Ritmo_Armonico[contador+2] = "sol"
                 compas += 1
             elif (i == 0) and (compas == 2):
-                Ritmo_Armonico[contador] = "fa"
-                Ritmo_Armonico[contador+1] = "la"
-                Ritmo_Armonico[contador+2] = "do"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 3):
-                Ritmo_Armonico[contador] = "sol"
-                Ritmo_Armonico[contador+1] = "si"
-                Ritmo_Armonico[contador+2] = "re"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 4):
-                Ritmo_Armonico[contador] = "do"
-                Ritmo_Armonico[contador+1] = "mi"
-                Ritmo_Armonico[contador+2] = "sol"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 5):
-                Ritmo_Armonico[contador] = "do"
-                Ritmo_Armonico[contador+1] = "mi"
-                Ritmo_Armonico[contador+2] = "sol"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 6):
-                Ritmo_Armonico[contador] = "fa"
-                Ritmo_Armonico[contador+1] = "la"
-                Ritmo_Armonico[contador+2] = "do"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 7):
-                Ritmo_Armonico[contador] = "sol"
-                Ritmo_Armonico[contador+1] = "si"
-                Ritmo_Armonico[contador+2] = "re"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 8):
                 Ritmo_Armonico[contador] = "do"
@@ -203,40 +218,55 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
             contador += 1
     elif c == "re":
         for i in Ritmo_Armonico:
+            mylist2 = ["sub", "sub", "dominante", "tonica"]
+            d = random.choice(mylist2)
+            if d == "sub":
+                var1 = "sol"
+                var2 = "si"
+                var3 = "re"
+            elif d == "dominante":
+                var1 = "la"
+                var2 = "do#"
+                var3 = "mi"
+            elif d == "tonica":
+                var1 = "re"
+                var2 = "fa#"
+                var3 = "la"
+
             if (i == 0) and (compas == 1):
                 Ritmo_Armonico[contador] = "re"
                 Ritmo_Armonico[contador+1] = "fa#"
                 Ritmo_Armonico[contador+2] = "la"
                 compas += 1
             elif (i == 0) and (compas == 2):
-                Ritmo_Armonico[contador] = "sol"
-                Ritmo_Armonico[contador+1] = "si"
-                Ritmo_Armonico[contador+2] = "re"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 3):
-                Ritmo_Armonico[contador] = "la"
-                Ritmo_Armonico[contador+1] = "do#"
-                Ritmo_Armonico[contador+2] = "mi"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 4):
-                Ritmo_Armonico[contador] = "re"
-                Ritmo_Armonico[contador+1] = "fa#"
-                Ritmo_Armonico[contador+2] = "la"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 5):
-                Ritmo_Armonico[contador] = "re"
-                Ritmo_Armonico[contador+1] = "fa#"
-                Ritmo_Armonico[contador+2] = "la"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 6):
-                Ritmo_Armonico[contador] = "sol"
-                Ritmo_Armonico[contador+1] = "si"
-                Ritmo_Armonico[contador+2] = "re"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 7):
-                Ritmo_Armonico[contador] = "la"
-                Ritmo_Armonico[contador+1] = "do#"
-                Ritmo_Armonico[contador+2] = "mi"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 8):
                 Ritmo_Armonico[contador] = "re"
@@ -246,45 +276,176 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
             contador += 1
     elif c == "fa":
         for i in Ritmo_Armonico:
+            mylist2 = ["sub", "sub", "dominante", "tonica"]
+            d = random.choice(mylist2)
+            if d == "sub":
+                var1 = "la#"
+                var2 = "re"
+                var3 = "fa"
+            elif d == "dominante":
+                var1 = "do"
+                var2 = "mi"
+                var3 = "sol"
+            elif d == "tonica":
+                var1 = "fa"
+                var2 = "la"
+                var3 = "do"
+
             if (i == 0) and (compas == 1):
                 Ritmo_Armonico[contador] = "fa"
                 Ritmo_Armonico[contador+1] = "la"
                 Ritmo_Armonico[contador+2] = "do"
                 compas += 1
             elif (i == 0) and (compas == 2):
-                Ritmo_Armonico[contador] = "la#"
-                Ritmo_Armonico[contador+1] = "re"
-                Ritmo_Armonico[contador+2] = "fa"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 3):
-                Ritmo_Armonico[contador] = "do"
-                Ritmo_Armonico[contador+1] = "mi"
-                Ritmo_Armonico[contador+2] = "sol"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 4):
-                Ritmo_Armonico[contador] = "fa"
-                Ritmo_Armonico[contador+1] = "la"
-                Ritmo_Armonico[contador+2] = "do"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 5):
-                Ritmo_Armonico[contador] = "fa"
-                Ritmo_Armonico[contador+1] = "la"
-                Ritmo_Armonico[contador+2] = "do"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 6):
-                Ritmo_Armonico[contador] = "la#"
-                Ritmo_Armonico[contador+1] = "re"
-                Ritmo_Armonico[contador+2] = "fa"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 7):
-                Ritmo_Armonico[contador] = "do"
-                Ritmo_Armonico[contador+1] = "mi"
-                Ritmo_Armonico[contador+2] = "sol"
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
                 compas += 1
             elif (i == 0) and (compas == 8):
                 Ritmo_Armonico[contador] = "fa"
                 Ritmo_Armonico[contador+1] = "la"
                 Ritmo_Armonico[contador+2] = "do"
+                compas += 1
+            contador += 1
+    elif c == "sol":
+        for i in Ritmo_Armonico:
+            mylist2 = ["sub", "sub", "dominante", "tonica"]
+            d = random.choice(mylist2)
+            if d == "sub":
+                var1 = "do"
+                var2 = "mi"
+                var3 = "sol"
+            elif d == "dominante":
+                var1 = "re"
+                var2 = "fa#"
+                var3 = "la"
+            elif d == "tonica":
+                var1 = "sol"
+                var2 = "si"
+                var3 = "re"
+
+            if (i == 0) and (compas == 1):
+                Ritmo_Armonico[contador] = "sol"
+                Ritmo_Armonico[contador+1] = "si"
+                Ritmo_Armonico[contador+2] = "re"
+                compas += 1
+            elif (i == 0) and (compas == 2):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 3):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 4):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 5):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 6):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 7):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 8):
+                Ritmo_Armonico[contador] = "sol"
+                Ritmo_Armonico[contador+1] = "si"
+                Ritmo_Armonico[contador+2] = "re"
+                compas += 1
+            contador += 1
+    elif c == "do#":
+        for i in Ritmo_Armonico:
+            mylist2 = ["sub", "sub", "dominante", "tonica"]
+            d = random.choice(mylist2)
+            if d == "sub":
+                var1 = "fa#"
+                var2 = "la#"
+                var3 = "do#"
+            elif d == "dominante":
+                var1 = "sol#"
+                var2 = "do"
+                var3 = "re#"
+            elif d == "tonica":
+                var1 = "do#"
+                var2 = "fa"
+                var3 = "sol#"
+
+            if (i == 0) and (compas == 1):
+                Ritmo_Armonico[contador] = "do#"
+                Ritmo_Armonico[contador+1] = "fa"
+                Ritmo_Armonico[contador+2] = "sol#"
+                compas += 1
+            elif (i == 0) and (compas == 2):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 3):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 4):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 5):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 6):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 7):
+                Ritmo_Armonico[contador] = var1
+                Ritmo_Armonico[contador+1] = var2
+                Ritmo_Armonico[contador+2] = var3
+                compas += 1
+            elif (i == 0) and (compas == 8):
+                Ritmo_Armonico[contador] = "do#"
+                Ritmo_Armonico[contador+1] = "fa"
+                Ritmo_Armonico[contador+2] = "sol#"
                 compas += 1
             contador += 1
     
@@ -306,7 +467,7 @@ def Run(filler, Instrumento3, Ritmo_Armonico, numerador, division):
     print("lista2: "+str(len(Instrumento3)))
     repeticiones = 0
     tonicaOdominante = True
-    while repeticiones < 1:
+    while repeticiones < 3:
         for i, e, u in zip(filler, Instrumento3, Ritmo_Armonico):
             if i == 0:
                 sonido2.play()
@@ -371,6 +532,9 @@ def Run(filler, Instrumento3, Ritmo_Armonico, numerador, division):
                 print("si")
                 time.sleep(beat_por_segundo)
         repeticiones += 1
+        bpm += 10
+        beat_por_segundo = 60.0 / bpm / 4.0
+        print("AGAIN")
 
 # Creacion de un menu sencillo
 pygame.init()
