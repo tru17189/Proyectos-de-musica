@@ -162,49 +162,63 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
     AcordesDo = {
         'tonica': ['do', 'mi', 'sol'],
         'sub': ['fa', 'la', 'do'],
+        'sub2': ['la', 'do', 'mi'],
         'dominante': ['sol', 'si', 're']
     }
     # acordes de do#
     AcordesDoSostenido = {
         'tonica': ['do#', 'fa', 'sol#'],
         'sub': ['fa#', 'la#', 'do#'],
+        'sub2': ['la#', 'do#', 'fa'],
         'dominante': ['sol#', 'do', 're#']
     }
     # acordes de re
     AcordesRe = {
         'tonica': ['re', 'fa#', 'la'],
         'sub': ['sol', 'si', 're'],
+        'sub2': ['si', 're', 'fa#'],
         'dominante': ['la', 'do#', 'mi']
     }
     # acordes de re#
     AcordesReSostenido = {
         'tonica': ['re#', 'sol', 'la#'],
         'sub': ['sol#', 'do', 're#'],
+        'sub2': ['do', 're#', 'sol'],
         'dominante': ['la#', 're', 'fa']
     }
     # acordes de mi
     AcordesMi = {
         'tonica': ['mi', 'sol#', 'si'],
         'sub': ['la', 'do#', 'mi'],
+        'sub2': ['do#', 'mi', 'sol#'],
         'dominante': ['si', 're#', 'fa#']
     }
     # acordes de fa
     AcordesFa = {
         'tonica': ['fa', 'la', 'do'],
         'sub': ['la#', 're', 'fa'],
+        'sub2': ['re', 'fa', 'la'],
         'dominante': ['do', 'mi', 'sol']
     }
     # acordes de fa#
     AcordesFaSostenido = {
         'tonica': ['fa#', 'la#', 'do#'],
         'sub': ['si', 're#', 'fa#'],
+        'sub2': ['re#', 'fa#', 'la#'],
         'dominante': ['do#', 'fa', 'sol#']
+    }
+    # acordes de sol
+    AcordesSol = {
+        'tonica': ['sol', 'si', 're'],
+        'sub': ['do', 'mi', 'sol'],
+        'sub2': ['mi', 'sol', 'si'],
+        'dominante': ['re', 'fa#', 'la']
     }
 
     # decidimos como eleguir los tonos
-    mylist = [AcordesDo, AcordesDoSostenido, AcordesRe, AcordesReSostenido, AcordesMi, AcordesFa, AcordesFaSostenido]
+    mylist = [AcordesDo, AcordesDoSostenido, AcordesRe, AcordesReSostenido, AcordesMi, AcordesFa, AcordesFaSostenido, AcordesSol]
     c = random.choice(mylist)
-    tonos = ["dominante", "sub", "sub"]
+    tonos = ["dominante", "sub", "sub2"]
     compas = 1
     separacion = len(Ritmo_Armonico)/8
     separacion = round(separacion/2)
@@ -221,9 +235,9 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
                         r2.append(c['tonica'][1])
                         r3.append(c['tonica'][2])
                     elif e == separacion:
-                        r1.append(c['tonica'][0])
-                        r2.append(c['tonica'][1])
-                        r3.append(c['tonica'][2])
+                        r1.append(c['sub'][0])
+                        r2.append(c['sub'][1])
+                        r3.append(c['sub'][2])
                     else:
                         r1.append(e)
                         r2.append(e)
@@ -231,14 +245,18 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
                 compas += 1
                 seccionA.append('tonica')
             elif (compas == 2) or (compas == 3) or (compas == 4):
-                d = random.choice(tonos)
-                seccionA.append(d)
                 for e in range(0, round(len(Ritmo_Armonico)/8)+1):
                     if e == 0:
+                        d = random.choice(tonos)
+                        print(d)
+                        seccionA.append(d)
                         r1.append(c[d][0])
                         r2.append(c[d][1])
                         r3.append(c[d][2])
                     elif e == separacion:
+                        d = random.choice(tonos)
+                        print(d)
+                        seccionA.append(d)
                         r1.append(c[d][0])
                         r2.append(c[d][1])
                         r3.append(c[d][2])
@@ -272,16 +290,28 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
     
     # Creamos la tercera seccion 
     eleccion_secciones = ["A", "B"]
+    opcion_eleguida = "B"
     velocidad = ["rapido", "lento"]
-    seccion_eleguida = "B"
-    while seccion_eleguida == "B":
-        print(seccion_eleguida)
-        seccion_eleguida = random.choice(eleccion_secciones)
-        velocidad_eleguida = random.choice(velocidad)
-        if seccion_eleguida == "A":
-            pass
-        elif seccion_eleguida == "B":
-            pass
+    velocidad_eleguida = random.choice(velocidad)
+    v = 0
+
+    while opcion_eleguida == "B":
+        if opcion_eleguida == "B":
+            for i in Ritmo_Armonico:
+                if 0 < v < len(Ritmo_Armonico)/2:
+                    r1.append(r1[v])
+                    r2.append(r2[v])
+                    r3.append(r3[v])
+                v += 1
+        v = 0
+        opcion_eleguida = random.choice(eleccion_secciones)
+    if opcion_eleguida == "A":
+        for i in Ritmo_Armonico:
+            if len(Ritmo_Armonico)/2 < v < len(Ritmo_Armonico):
+                r1.append(r1[v])
+                r2.append(r2[v])
+                r3.append(r3[v])
+            v += 1
 
     return r1, r2, r3, velocidad_eleguida
 
@@ -291,10 +321,15 @@ print("r2: %s" %r2)
 print("r3: %s" %r3)
 
 # Metodo para recorrer las listas
-def Run(filler, Instrumento3, r1, r2, r3):
+def Run(filler, Instrumento3, r1, r2, r3, velocidad):
     bpm = 80
     beat_por_segundo = 60.0 / bpm / 4.0
     repeticiones = 0
+    if velocidad == "rapido":
+        velocidad = 3
+    elif velocidad == "lento":
+        velocidad = -3
+
     while repeticiones < 3:
         for i, e, u, o, p in zip(filler, Instrumento3, r1, r2, r3):
             print("\n%s \n%s \n%s" % (u, o, p))
@@ -345,6 +380,13 @@ def Run(filler, Instrumento3, r1, r2, r3):
             elif (u == "do") or (o == "do") or (p == "do"):
                 si.play()
                 time.sleep(beat_por_segundo)
+        if velocidad > 0:
+            bpm = bpm + velocidad
+            velocidad += 5
+        elif velocidad < 0:
+            bpm = bpm + velocidad
+            velocidad -= 5
+        beat_por_segundo = 60.0 / bpm / 4.0
         repeticiones += 1
 
 # Creacion de un menu sencillo
@@ -403,4 +445,4 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if greenButton.isOver(pos):
                 pass
-                Run(filler, Instrumento3, r1, r2, r3)
+                Run(filler, Instrumento3, r1, r2, r3, velocidad)
