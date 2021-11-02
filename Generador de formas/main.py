@@ -87,15 +87,6 @@ Instrumento3 = TerceraLista(filler)
 
 # Recolectamos los sonidos
 mixer.init()
-sonido1 = mixer.Sound('sound4.ogg') 
-sonido1.set_volume(0.2)
-sonido2 = mixer.Sound('sound8.ogg') 
-sonido2.set_volume(0.2)
-sonido3 = mixer.Sound('sound6.ogg') 
-sonido3.set_volume(0.2)
-sonido4 = mixer.Sound('sound7.ogg')  
-sonido4.set_volume(0.2)
-
 do = mixer.Sound('Sounds/do.ogg')
 do.set_volume(1.0)
 doMayor = mixer.Sound('Sounds/do#.ogg')
@@ -157,6 +148,7 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
     r1 = []
     r2 = []
     r3 = []
+    r4 = []
 
     # acordes de do
     AcordesDo = {
@@ -234,36 +226,52 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
                         r1.append(c['tonica'][0])
                         r2.append(c['tonica'][1])
                         r3.append(c['tonica'][2])
+                        # melodia 
+                        r4.append(c['tonica'][2])
+                        r4.append(c['tonica'][1])
+                        r4.append(c['tonica'][0])
                     elif e == separacion:
                         r1.append(c['sub'][0])
                         r2.append(c['sub'][1])
                         r3.append(c['sub'][2])
+                        # melodia 
+                        r4.append(c['sub'][2])
+                        r4.append(c['sub'][1])
+                        r4.append(c['sub'][0])
                     else:
                         r1.append(e)
                         r2.append(e)
                         r3.append(e)
+                        r4.append(e)
                 compas += 1
                 seccionA.append('tonica')
             elif (compas == 2) or (compas == 3) or (compas == 4):
                 for e in range(0, round(len(Ritmo_Armonico)/8)+1):
                     if e == 0:
                         d = random.choice(tonos)
-                        print(d)
                         seccionA.append(d)
                         r1.append(c[d][0])
                         r2.append(c[d][1])
                         r3.append(c[d][2])
+                        # melodia 
+                        r4.append(c[d][2])
+                        r4.append(c[d][1])
+                        r4.append(c[d][0])
                     elif e == separacion:
                         d = random.choice(tonos)
-                        print(d)
                         seccionA.append(d)
                         r1.append(c[d][0])
                         r2.append(c[d][1])
                         r3.append(c[d][2])
+                        # melodia 
+                        r4.append(c[d][2])
+                        r4.append(c[d][1])
+                        r4.append(c[d][0])
                     else:
                         r1.append(e)
                         r2.append(e)
                         r3.append(e)
+                        r4.append(e)
                 compas += 1
 
     # creamos seccion B
@@ -276,14 +284,23 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
                     r1.append(c[q][0])
                     r2.append(c[q][1])
                     r3.append(c[q][2])
+                    # melodia 
+                    r4.append(c[q][2])
+                    r4.append(c[q][1])
+                    r4.append(c[q][0])
                 elif e == separacion:
                     r1.append(c[q][0])
                     r2.append(c[q][1])
                     r3.append(c[q][2])
+                    # melodia 
+                    r4.append(c[q][2])
+                    r4.append(c[q][1])
+                    r4.append(c[q][0])
                 else:
                     r1.append(e)
                     r2.append(e)
                     r3.append(e)
+                    r4.append(e)
             seccionA.remove(q)
             if len(seccionA) == 0:
                 break
@@ -302,6 +319,10 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
                     r1.append(r1[v])
                     r2.append(r2[v])
                     r3.append(r3[v])
+                    # melodia 
+                    r4.append(r3[v])
+                    r4.append(r2[v])
+                    r4.append(r1[v])
                 v += 1
         v = 0
         opcion_eleguida = random.choice(eleccion_secciones)
@@ -311,14 +332,54 @@ def Dominante_Tonica_Sub(Ritmo_Armonico):
                 r1.append(r1[v])
                 r2.append(r2[v])
                 r3.append(r3[v])
+                # melodia 
+                r4.append(r3[v])
+                r4.append(r2[v])
+                r4.append(r1[v])
             v += 1
 
-    return r1, r2, r3, velocidad_eleguida
+    return r1, r2, r3, r4, velocidad_eleguida, c['tonica'][0]
 
-r1, r2, r3, velocidad = Dominante_Tonica_Sub(Ritmo_Armonico)
+r1, r2, r3, r4, velocidad, nota_eleguida = Dominante_Tonica_Sub(Ritmo_Armonico)
+print("Escala de %s" % nota_eleguida)
 print("r1: %s" %r1)
-print("r2: %s" %r2)
-print("r3: %s" %r3)
+print("\nr2: %s" %r2)
+print("\nr3: %s" %r3)
+print("\nr4: %s" %r4)
+
+# sonidos para el filler y el instrumentos de acompanamiento
+if nota_eleguida == "do":
+    sound1 = do.play()
+    sound2 = re.play()
+    sound3 = mi.play()
+elif nota_eleguida == "do#":
+    sound1 = doMayor.play()
+    sound2 = fa.play()
+    sound3 = solMayor.play()
+elif nota_eleguida == "re":
+    sound1 = re.play()
+    sound2 = faMayor.play()
+    sound3 = la.play()
+elif nota_eleguida == "re#":
+    sound1 = reMayor.play()
+    sound2 = sol.play()
+    sound3 = laMayor.play()
+elif nota_eleguida == "mi":
+    sound1 = mi.play()
+    sound2 = solMayor.play()
+    sound3 = si.play()
+elif nota_eleguida == "fa":
+    sound1 = fa.play()
+    sound2 = la.play()
+    sound3 = do.play()
+elif nota_eleguida == "fa#":
+    sound1 = faMayor.play()
+    sound2 = laMayor.play()
+    sound3 = doMayor.play()
+elif nota_eleguida == "sol":
+    sound1 = sol.play()
+    sound2 = si.play()
+    sound3 = re.play()
 
 # Metodo para recorrer las listas
 def Run(filler, Instrumento3, r1, r2, r3, velocidad):
@@ -331,53 +392,53 @@ def Run(filler, Instrumento3, r1, r2, r3, velocidad):
         velocidad = -3
 
     while repeticiones < 3:
-        for i, e, u, o, p in zip(filler, Instrumento3, r1, r2, r3):
-            print("\n%s \n%s \n%s" % (u, o, p))
+        for i, e, u, o, p, g in zip(filler, Instrumento3, r1, r2, r3, r4):
+            print("\t%s \t%s \t%s" % (u, o, p))
             if i == 0:
-                sonido2.play()
+                sound1
                 time.sleep(beat_por_segundo)
             elif i == 1:
-                sonido3.play()
+                sound2
                 time.sleep(beat_por_segundo)
             if e == 0:
                 pass
             elif e ==1:
-                sonido4.play() 
+                sound3
                 time.sleep(beat_por_segundo) 
-            if (u == "do") or (o == "do") or (p == "do"):
+            if (u == "do") or (o == "do") or (p == "do") or (g == "do"):
                 do.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "do#") or (o == "do#") or (p == "do#"):
+            elif (u == "do#") or (o == "do#") or (p == "do#") or (g == "do#"):
                 doMayor.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "re") or (o == "re") or (p == "re"):
+            elif (u == "re") or (o == "re") or (p == "re") or (g == "re"):
                 re.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "re#") or (o == "re#") or (p == "re#"):
+            elif (u == "re#") or (o == "re#") or (p == "re#") or (g == "re#"):
                 reMayor.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "mi") or (o == "mi") or (p == "mi"):
+            elif (u == "mi") or (o == "mi") or (p == "mi") or (g == "mi"):
                 mi.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "fa") or (o == "fa") or (p == "fa"):
+            elif (u == "fa") or (o == "fa") or (p == "fa") or (g == "fa"):
                 fa.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "fa#") or (o == "fa#") or (p == "fa#"):
+            elif (u == "fa#") or (o == "fa#") or (p == "fa#") or (g == "fa#"):
                 faMayor.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "sol") or (o == "sol") or (p == "sol"):
+            elif (u == "sol") or (o == "sol") or (p == "sol") or (g == "sol"):
                 sol.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "sol#") or (o == "sol#") or (p == "sol#"):
+            elif (u == "sol#") or (o == "sol#") or (p == "sol#") or (g == "sol#"):
                 solMayor.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "la") or (o == "la") or (p == "la"):
+            elif (u == "la") or (o == "la") or (p == "la") or (g == "la"):
                 la.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "la#") or (o == "la#") or (p == "la#"):
+            elif (u == "la#") or (o == "la#") or (p == "la#") or (g == "la#"):
                 laMayor.play()
                 time.sleep(beat_por_segundo)
-            elif (u == "do") or (o == "do") or (p == "do"):
+            elif (u == "si") or (o == "si") or (p == "si") or (g == "si"):
                 si.play()
                 time.sleep(beat_por_segundo)
         if velocidad > 0:

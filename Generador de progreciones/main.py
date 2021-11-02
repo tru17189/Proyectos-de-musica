@@ -470,17 +470,17 @@ def Run(filler, Instrumento3, Ritmo_Armonico, numerador, division):
     while repeticiones < 3:
         for i, e, u in zip(filler, Instrumento3, Ritmo_Armonico):
             if i == 0:
-                sonido2.play()
+                do.play()
                 print("sonido 2")
                 time.sleep(beat_por_segundo)
             elif i == 1:
-                sonido3.play()
+                re.play()
                 print("sonido 3")
                 time.sleep(beat_por_segundo)
             if e == 0:
                 pass
             elif e ==1:
-                sonido4.play() 
+                mi.play() 
                 print("sonido 4")   
                 time.sleep(beat_por_segundo) 
             if u == "do":
