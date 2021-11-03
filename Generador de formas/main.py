@@ -87,6 +87,15 @@ Instrumento3 = TerceraLista(filler)
 
 # Recolectamos los sonidos
 mixer.init()
+sonido1 = mixer.Sound('sound4.ogg') 
+sonido1.set_volume(0.2)
+sonido2 = mixer.Sound('sound8.ogg') 
+sonido2.set_volume(0.2)
+sonido3 = mixer.Sound('sound6.ogg') 
+sonido3.set_volume(0.2)
+sonido4 = mixer.Sound('sound7.ogg')  
+sonido4.set_volume(0.2)
+
 do = mixer.Sound('Sounds/do.ogg')
 do.set_volume(1.0)
 doMayor = mixer.Sound('Sounds/do#.ogg')
@@ -347,7 +356,7 @@ print("\nr2: %s" %r2)
 print("\nr3: %s" %r3)
 print("\nr4: %s" %r4)
 
-# sonidos para el filler y el instrumentos de acompanamiento
+'''# sonidos para el filler y el instrumentos de acompanamiento
 if nota_eleguida == "do":
     sound1 = do.play()
     sound2 = re.play()
@@ -379,7 +388,7 @@ elif nota_eleguida == "fa#":
 elif nota_eleguida == "sol":
     sound1 = sol.play()
     sound2 = si.play()
-    sound3 = re.play()
+    sound3 = re.play()'''
 
 # Metodo para recorrer las listas
 def Run(filler, Instrumento3, r1, r2, r3, velocidad):
@@ -393,17 +402,21 @@ def Run(filler, Instrumento3, r1, r2, r3, velocidad):
 
     while repeticiones < 3:
         for i, e, u, o, p, g in zip(filler, Instrumento3, r1, r2, r3, r4):
+            g = 0
             print("\t%s \t%s \t%s" % (u, o, p))
             if i == 0:
-                sound1
+                # sound1
+                sonido1.play()
                 time.sleep(beat_por_segundo)
             elif i == 1:
-                sound2
+                # sound2
+                sonido2.play()
                 time.sleep(beat_por_segundo)
             if e == 0:
                 pass
             elif e ==1:
-                sound3
+                # sound3
+                sonido3.play()
                 time.sleep(beat_por_segundo) 
             if (u == "do") or (o == "do") or (p == "do") or (g == "do"):
                 do.play()
