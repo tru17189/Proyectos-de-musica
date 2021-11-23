@@ -86,15 +86,21 @@ def TerceraLista(relleno):
 Instrumento3 = TerceraLista(filler)
 
 # Recolectamos los sonidos
+Baul_sonidos_3 = ['sound7.ogg', 'SoundTrash4.ogg', 'SoundHat2.ogg']
+s3 = random.choice(Baul_sonidos_3)
+Baul_sonidos_2 = ['sound8.ogg', 'SoundHat.ogg', 'SoundSnar.ogg']
+s2 = random.choice(Baul_sonidos_2)
+Baul_sonidos_1 = ['sound4.ogg', 'sound6.ogg', 'SoundKurz.ogg']
+s1 = random.choice(Baul_sonidos_1)
+print(s3)
+
 mixer.init()
-sonido1 = mixer.Sound('sound4.ogg') 
-sonido1.set_volume(0.2)
-sonido2 = mixer.Sound('sound8.ogg') 
-sonido2.set_volume(0.2)
-sonido3 = mixer.Sound('sound6.ogg') 
-sonido3.set_volume(0.2)
-sonido4 = mixer.Sound('sound7.ogg')  
-sonido4.set_volume(0.2)
+sonido1 = mixer.Sound(s1) 
+sonido1.set_volume(0.5)
+sonido2 = mixer.Sound(s2) 
+sonido2.set_volume(0.5)
+sonido3 = mixer.Sound(s3) 
+sonido3.set_volume(0.5)
 
 do = mixer.Sound('Sounds/do.ogg')
 do.set_volume(1.0)
@@ -332,7 +338,7 @@ def Run(filler, Instrumento3, r1, r2, r3, r4):
     beat_por_segundo = 60.0 / bpm / 4.0
     repeticiones = 0
 
-    while repeticiones < 1:
+    while repeticiones < 2:
         for i, e, u, o, p, k in zip(filler, Instrumento3, r1, r2, r3, r4):
             #print("\t%s \t%s \t%s" % (u, o, p))
             print("\t %s" % k)
@@ -387,6 +393,7 @@ def Run(filler, Instrumento3, r1, r2, r3, r4):
                 si.play()
                 time.sleep(beat_por_segundo)
         repeticiones += 1
+        beat_por_segundo += 0.05
 
 # Creacion de un menu sencillo
 pygame.init()
